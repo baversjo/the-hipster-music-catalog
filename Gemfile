@@ -47,3 +47,4 @@ gem "twitter-bootstrap-rails"
 
 gem "koala", "~> 1.7.0rc1"
 gem "omniauth-facebook"
+gem 'httpclient'

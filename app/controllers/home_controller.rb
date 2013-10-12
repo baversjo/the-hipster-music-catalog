@@ -6,6 +6,7 @@ class HomeController < ApplicationController
 		if !session[:user_id].nil?
 			@u = User.find(session[:user_id])
 			@topHipsters = @u.friends.order(:score)
+			@fb_id = @u.id
 		end
 
 
