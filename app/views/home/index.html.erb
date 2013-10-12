@@ -1,5 +1,14 @@
 <div class="container">
     <h1>The Hipster Music Catalogue</h1>
+
+    <ul>
+    <% flash.each do |key, msg| %>
+          <%= content_tag :li, msg, id: key %>
+    <% end %>
+    </ul>
+
+<p><%= link_to 'Sign in with Facebook', signin_path %></p>
+
     <div class="row">
         <div class="col-lg-6">
             <h3>

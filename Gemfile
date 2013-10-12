@@ -44,3 +44,6 @@ gem 'rails_12factor', group: :production
 # gem 'debugger', group: [:development, :test]
 
 gem "twitter-bootstrap-rails"
+
+gem "koala", "~> 1.7.0rc1"
+gem "omniauth-facebook"
