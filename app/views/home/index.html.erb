@@ -1,116 +1,129 @@
-<div class="container">
+<div class="container" style = "position:relative;">
 
-    <div class="navbar navbar-inverse navbar-fixed-top">
-          <div class="container">
-
-
-          </div>
-        </div>
-
-    <div class="jumbotron">
     <h1>The Hipster Music Catalogue</h1>
 
-
-
-        <div class="rake db:migrate RAILS_ENV=development">
-            <h3>
-
-                <% if !@u.nil? %>
-                    <%= @u.name %>
-                <%else%>
-                    Total Hipster
-                <% end %>
-            </h3>
-            <% if !@u.nil? %>
-                <img src="https://graph.facebook.com/<%=@u.uid%>/picture?type=large">
-            <%else%>
-                <%= image_tag("pholder.jpg", :size=>"180x180") %>
-            <% end %>
+    <div style="color:purple; margin-bottom:-14px" >
+    <% flash.each do |key, msg| %>
+          <%= content_tag :p, msg, id: key %>
+    <% end %>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+           <%= image_tag("hipster1_2.jpg", :alt => "he's soo hipster", :id => "hipster2") %>
         </div>
-        <% if flash[:notice] == "Signed in!" %>
+        <div class="col-lg-4">
+        <h3>
+            For: 
+            <% if !@u.nil? %>
+                <%= @u.name %>
+            <%else%>
+                Total Hipster
+            <% end %>
+        </h3>
+        <% if !@u.nil? %>
+            <img src="https://graph.facebook.com/<%=@u.uid%>/picture?type=large">
+        <%else%>
+            <%= image_tag("pholder.jpg", :size=>"180x180") %>
+        <% end %>
+    
+    
+        <% if flash[:notice] == " " %>
             <div id="spinner"> Doin' its thang </div>
         <% end %>
 
-         <div style="color:green;">
-            <% flash.each do |key, msg| %>
-                  <%= content_tag :p, msg, id: key %>
-            <% end %>
-            <button type="button" class="btn btn-default">Sign Out</button>
-         </div>
-     </div>
-        <div class="">
-            <h3>Hipster Rankings</h3>
-            <table class="table table-striped">
-                <tr>
-                    <th>Friend</th>
-                    <th>Hipster Rank</th>
-                    <th>Hipster Score</th>
-                </tr>
-                <% if !@topHipsters.nil? %>
-                    <% @topHipsters.each_with_index do |hipster, i| %>
-                        <tr>
-                            <td><%= hipster.name %></td>
-                            <td><%= i %></td>
-                            <td><%= hipster.score %></td>
-                        </tr>
-                    <% end %>
-                <% else %>
-                <tr>
-                    <td> Hipster 1 </td>
-                    <td>1</td>
-                    <td>Score</td>
-                </tr>
-                <tr>
-                    <td>Hipster 2</td>
-                    <td>2</td>
-                    <td>Score</td>
-                </tr>
-                <tr>
-                    <td>Hipster 3</td>
-                    <td>3</td>
-                    <td>Score</td>
-                </tr>
-                <tr>
-                    <td>Hipster 4</td>
-                    <td>4</td>
-                    <td>Score</td>
-                </tr>
-                <tr>
-                    <td>Hipster 5</td>
-                    <td>5</td>
-                    <td>Score</td>
-                </tr>
-                <tr>
-                    <td>Hipster 6</td>
-                    <td>6</td>
-                    <td>Score</td>
-                </tr>
-                <tr>
-                    <td>Hipster 7</td>
-                    <td>7</td>
-                    <td>Score</td>
-                </tr>
-                <tr>
-                    <td>Hipster 8</td>
-                    <td>8</td>
-                    <td>Score</td>
-                </tr>
-                <tr>
-                    <td>Hipster 9</td>
-                    <td>9</td>
-                    <td>Score</td>
-                </tr>
-                <tr>
-                    <td>Hipster 10</td>
-                    <td>10</td>
-                    <td>Score</td>
-                </tr>
-                <% end %>
-            </table>
+        <% if !@u.nil? %>
+            <div id = "button_div"> <button class = "btn btn-primary" onclick="location.href='/signout'">
+            Sign Out</button> </div>
+        <% end %>
+    
+        </div>
+        <div class="col-lg-4">
+            <%= image_tag("hipster2_2.jpg", :alt => "she's soo hipster", :id => "hipster1") %>
+        </div>
+    </div>
+        <div class="row">
 
+        <h3>Hipster Rankings</h3>
+        <table class="table table-striped">
+            <tr>
+                <th>Friend</th>
+                <th>Hipster Rank</th>
+                <th>Hipster Score</th>
+            </tr>
+
+            <% if !@topHipsters.nil? %>
+                <% @topHipsters.each_with_index do |hipster, i| %>
+                    <tr>
+                        <td><%= hipster.name %></td>
+                        <td><%= i %></td>
+                        <td><%= hipster.score %></td>
+                    </tr>
+                <% end %>
+            <% else %>
+            <tr>
+                <td> Hipster 1 </td>
+                <td>1</td>
+                <td>Score</td>
+            </tr>
+            <tr>
+                <td>Hipster 2</td>
+                <td>2</td>
+                <td>Score</td>
+            </tr>
+            <tr>
+                <td>Hipster 3</td>
+                <td>3</td>
+                <td>Score</td>
+            </tr>
+            <tr>
+                <td>Hipster 4</td>
+                <td>4</td>
+                <td>Score</td>
+            </tr>
+            <tr>
+                <td>Hipster 5</td>
+                <td>5</td>
+                <td>Score</td>
+            </tr>
+            <tr>
+                <td>Hipster 6</td>
+                <td>6</td>
+                <td>Score</td>
+            </tr>
+            <tr>
+                <td>Hipster 7</td>
+                <td>7</td>
+                <td>Score</td>
+            </tr>
+            <tr>
+                <td>Hipster 8</td>
+                <td>8</td>
+                <td>Score</td>
+            </tr>
+            <tr>
+                <td>Hipster 9</td>
+                <td>9</td>
+                <td>Score</td>
+            </tr>
+            <tr>
+                <td>Hipster 10</td>
+                <td>10</td>
+                <td>Score</td>
+            </tr>
+            <% end %>
+        </table>
+    
+    </div>
+    </div>
         </div>
 
+<footer>
+    <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.hipstermusiccatalogue.com%2F&amp;width=auto&amp;height=80&amp;colorscheme=light&amp;layout=standard&amp;action=like&amp;show_faces=true&amp;send=false&amp;appId=568118486570040" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:autopx; height:80px;" allowTransparency="true"></iframe>
+</footer>
+    
+    
 </div>
+
 <script>
     var target = document.getElementById("spinner");
     var spinner = new Spinner().spin(target);
