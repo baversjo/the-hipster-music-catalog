@@ -1,15 +1,20 @@
 <div class="container">
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+          <div class="container">
+
+
+          </div>
+        </div>
+
+    <div class="jumbotron">
     <h1>The Hipster Music Catalogue</h1>
 
-    <div>
-    <% flash.each do |key, msg| %>
-          <%= content_tag :p, msg, id: key %>
-    <% end %>
-    </div>
-    <div class="row">
-        <div class="col-lg-6">
+
+
+        <div class="rake db:migrate RAILS_ENV=development">
             <h3>
-                Name: 
+
                 <% if !@u.nil? %>
                     <%= @u.name %>
                 <%else%>
@@ -25,7 +30,15 @@
         <% if flash[:notice] == "Signed in!" %>
             <div id="spinner"> Doin' its thang </div>
         <% end %>
-        <div class="col-lg-6">
+
+         <div style="color:green;">
+            <% flash.each do |key, msg| %>
+                  <%= content_tag :p, msg, id: key %>
+            <% end %>
+            <button type="button" class="btn btn-default">Sign Out</button>
+         </div>
+     </div>
+        <div class="">
             <h3>Hipster Rankings</h3>
             <table class="table table-striped">
                 <tr>
@@ -96,7 +109,7 @@
             </table>
 
         </div>
-    </div>
+
 </div>
 <script>
     var target = document.getElementById("spinner");
