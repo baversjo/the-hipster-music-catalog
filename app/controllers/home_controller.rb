@@ -3,8 +3,10 @@ class HomeController < ApplicationController
 
 		@user = User.first
 
-		u = User.find(session[:user_id])
-		@topHipsters = u.friends.order(:score)
+		if !session[:user_id].nil?
+			@u = User.find(session[:user_id])
+			@topHipsters = @u.friends.order(:score)
+		end
 
 
 	end

@@ -6,15 +6,21 @@
           <%= content_tag :p, msg, id: key %>
     <% end %>
     </div>
-
-<p><%= link_to 'Sign in with Facebook to see your Friends hipster rank, I dare you.', signin_path %></p>
-
     <div class="row">
         <div class="col-lg-6">
             <h3>
-                Name: Ramon Rovirosa
+                Name: 
+                <% if !@u.nil? %>
+                    <%= @u.name %>
+                <%else%>
+                    Total Hipster
+                <% end %>
             </h3>
-            <img src="https://graph.facebook.com/ramonrovirosa/picture?type=large">
+            <% if !@u.nil? %>
+                <img src="https://graph.facebook.com/<%=@u.uid%>/picture?type=large">
+            <%else%>
+                <%= image_tag("pholder.jpg", :size=>"180x180") %>
+            <% end %>
         </div>
         <% if flash[:notice] == "Signed in!" %>
             <div id="spinner"> Doin' its thang </div>
@@ -95,4 +101,9 @@
 <script>
     var target = document.getElementById("spinner");
     var spinner = new Spinner().spin(target);
+    $(document).ready( function() {
+        if( $('#notice').length === 0 ){
+            window.location.href = "/signin";
+        }
+    });
 </script>
