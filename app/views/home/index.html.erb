@@ -1,13 +1,13 @@
 <div class="container">
     <h1>The Hipster Music Catalogue</h1>
 
-    <ul>
+    <div>
     <% flash.each do |key, msg| %>
-          <%= content_tag :li, msg, id: key %>
+          <%= content_tag :p, msg, id: key %>
     <% end %>
-    </ul>
+    </div>
 
-<p><%= link_to 'Sign in with Facebook', signin_path %></p>
+<p><%= link_to 'Sign in with Facebook to see your Friends hipster rank, I dare you.', signin_path %></p>
 
     <div class="row">
         <div class="col-lg-6">
@@ -16,6 +16,9 @@
             </h3>
             <img src="https://graph.facebook.com/ramonrovirosa/picture?type=large">
         </div>
+        <% if flash[:notice] == "Signed in!" %>
+            <div id="spinner"> Doin' its thang </div>
+        <% end %>
         <div class="col-lg-6">
             <h3>Hipster Rankings</h3>
             <table class="table table-striped">
@@ -24,58 +27,72 @@
                     <th>Hipster Rank</th>
                     <th>Hipster Score</th>
                 </tr>
+                <% if @topHipsters.present? %>
+                    <% @topHipsters.each_with_index do |hipster, i| %>
+                        <tr>
+                            <td><%= hipster.name %></td>
+                            <td><%= i %></td>
+                            <td><%= hipster.score %></td>
+                        </tr>
+                    <% end %>
+                <% else %>
                 <tr>
-                    <td>Friend 1</td>
+                    <td> Hipster 1 </td>
                     <td>1</td>
                     <td>Score</td>
                 </tr>
                 <tr>
-                    <td>Friend 2</td>
+                    <td>Hipster 2</td>
                     <td>2</td>
                     <td>Score</td>
                 </tr>
                 <tr>
-                    <td>Friend 3</td>
+                    <td>Hipster 3</td>
                     <td>3</td>
                     <td>Score</td>
                 </tr>
                 <tr>
-                    <td>Friend 4</td>
+                    <td>Hipster 4</td>
                     <td>4</td>
                     <td>Score</td>
                 </tr>
                 <tr>
-                    <td>Friend 5</td>
+                    <td>Hipster 5</td>
                     <td>5</td>
                     <td>Score</td>
                 </tr>
                 <tr>
-                    <td>Friend 6</td>
+                    <td>Hipster 6</td>
                     <td>6</td>
                     <td>Score</td>
                 </tr>
                 <tr>
-                    <td>Friend 7</td>
+                    <td>Hipster 7</td>
                     <td>7</td>
                     <td>Score</td>
                 </tr>
                 <tr>
-                    <td>Friend 8</td>
+                    <td>Hipster 8</td>
                     <td>8</td>
                     <td>Score</td>
                 </tr>
                 <tr>
-                    <td>Friend 9</td>
+                    <td>Hipster 9</td>
                     <td>9</td>
                     <td>Score</td>
                 </tr>
                 <tr>
-                    <td>Friend 10</td>
+                    <td>Hipster 10</td>
                     <td>10</td>
                     <td>Score</td>
                 </tr>
+                <% end %>
             </table>
 
         </div>
     </div>
 </div>
+<script>
+    var target = document.getElementById("spinner");
+    var spinner = new Spinner().spin(target);
+</script>
