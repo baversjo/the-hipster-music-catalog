@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131012142409) do
+ActiveRecord::Schema.define(version: 20131012200450) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "friendships", id: false, force: true do |t|
-    t.integer "user_id",   null: false
-    t.integer "friend_id", null: false
+    t.integer "user_id",   limit: 8, null: false
+    t.integer "friend_id", limit: 8, null: false
   end
 
   create_table "users", force: true do |t|
