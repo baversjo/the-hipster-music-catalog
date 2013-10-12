@@ -27,7 +27,7 @@
                     <th>Hipster Rank</th>
                     <th>Hipster Score</th>
                 </tr>
-                <% if @topHipsters.present? %>
+                <% if !@topHipsters.nil? %>
                     <% @topHipsters.each_with_index do |hipster, i| %>
                         <tr>
                             <td><%= hipster.name %></td>

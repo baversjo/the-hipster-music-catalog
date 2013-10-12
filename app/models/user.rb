@@ -1,9 +1,7 @@
 class User < ActiveRecord::Base
-	
-  has_and_belongs_to_many(:friends,
-    :join_table => "friends",
-    :foreign_key => "user_id",
-    :association_foreign_key => "friend_id")
+
+  has_many :friendships
+  has_many :friends, :through => :friendships
 
 	def self.create_with_omniauth(auth)
   		create! do |user|

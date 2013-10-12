@@ -142,7 +142,7 @@
   var defaults = {
     lines: 17,            // The number of lines to draw
     length: 2,            // The length of each line
-    width: 30,             // The line thickness
+    width: 20,             // The line thickness
     radius: 15,           // The radius of the inner circle
     rotate: 0,            // Rotation offset
     corners: 1,           // Roundness (0..1)
