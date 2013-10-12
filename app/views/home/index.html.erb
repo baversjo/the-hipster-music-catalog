@@ -48,8 +48,8 @@
         </div>
     </div>
         <div class="row">
-
-        <h3>Hipster Rankings</h3>
+        <% if !@topHipsters.nil? %>
+        <h3>Your Friend's Hipster Rankings</h3>
         <table class="table table-striped">
             <tr>
                 <th>Friend</th>
@@ -57,69 +57,36 @@
                 <th>Hipster Score</th>
             </tr>
 
-            <% if !@topHipsters.nil? %>
-                <% @topHipsters.each_with_index do |hipster, i| %>
-                    <tr>
-                        <td><%= hipster.name %></td>
-                        <td><%= i+1 %></td>
-                        <td><%= hipster.score %></td>
-                    </tr>
-                <% end %>
-            <% else %>
-            <tr>
-                <td> Hipster 1 </td>
-                <td>1</td>
-                <td>Score</td>
-            </tr>
-            <tr>
-                <td>Hipster 2</td>
-                <td>2</td>
-                <td>Score</td>
-            </tr>
-            <tr>
-                <td>Hipster 3</td>
-                <td>3</td>
-                <td>Score</td>
-            </tr>
-            <tr>
-                <td>Hipster 4</td>
-                <td>4</td>
-                <td>Score</td>
-            </tr>
-            <tr>
-                <td>Hipster 5</td>
-                <td>5</td>
-                <td>Score</td>
-            </tr>
-            <tr>
-                <td>Hipster 6</td>
-                <td>6</td>
-                <td>Score</td>
-            </tr>
-            <tr>
-                <td>Hipster 7</td>
-                <td>7</td>
-                <td>Score</td>
-            </tr>
-            <tr>
-                <td>Hipster 8</td>
-                <td>8</td>
-                <td>Score</td>
-            </tr>
-            <tr>
-                <td>Hipster 9</td>
-                <td>9</td>
-                <td>Score</td>
-            </tr>
-            <tr>
-                <td>Hipster 10</td>
-                <td>10</td>
-                <td>Score</td>
-            </tr>
+            <% @topHipsters.each_with_index do |hipster, i| %>
+                <tr>
+                    <td><%= link_to hipster.name, "https://facebook.com/#{hipster.id}" %></td>
+                    <td><%= i+1 %></td>
+                    <td><%= hipster.score %></td>
+                </tr>
             <% end %>
         </table>
+        <% end %>
+        </div>
+        <div class="row">
+        <h3>Global Hipster Rankings</h3>
+        <table class="table table-striped">
+            <tr>
+                <th>Name</th>
+                <th>Hipster Rank</th>
+                <th>Hipster Score</th>
+            </tr>
+
+            <% @globalTopHipsters.each_with_index do |hipster, i| %>
+                <tr>
+                    <td><%= link_to hipster.name, "https://facebook.com/#{hipster.id}" %></td>
+                    <td><%= i+1 %></td>
+                    <td><%= hipster.score %></td>
+                </tr>
+            <% end %>
+        </table>
+        </div>
     
-    </div>
+        </div>
     </div>
         </div>
 
