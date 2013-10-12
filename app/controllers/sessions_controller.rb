@@ -16,7 +16,7 @@ class SessionsController < ActionController::Base
 		  else
 			  base_url = "http://localhost:5000/"
 		  end
-
+		  
 		  http.get "#{base_url}howhipsteris?fb_id=#{user.id}&access_token=#{token}"
 
 

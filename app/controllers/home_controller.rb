@@ -1,19 +1,12 @@
 class HomeController < ApplicationController
 	def index
-
-		@user = User.first
-
+		@fb_id = -1
 		if !session[:user_id].nil?
 			@u = User.find(session[:user_id])
-			@topHipsters = @u.friends.order(:score)
+			@topHipsters = @u.friends.order('score desc').limit(20)
 			@fb_id = @u.id
 		end
-
-
-	end
-
-	def facebook_auth
-		# @graph = Koala::Facebook::API.new
+		@globalTopHipsters = User.order('score desc').limit(20)
 	end
 
 end

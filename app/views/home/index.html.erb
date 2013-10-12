@@ -28,10 +28,16 @@
     
     
         <% if flash[:notice] == " " %>
-            <div id="spinner"> Doin' its thang </div>
+            <div class="progress progress-striped active">
+              <div id="superprogress" class="progress-bar"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+              </div>
+            </div>
         <% end %>
 
-        <% if !@u.nil? %>
+        <% if @u.nil? %>
+            <div id = "button_div"> <button class = "btn btn-primary" onclick="location.href='/signin'">
+                Discover which friend is hipsterest!</button> </div>
+        <% else %>
             <div id = "button_div"> <button class = "btn btn-primary" onclick="location.href='/signout'">
             Sign Out</button> </div>
         <% end %>
@@ -55,7 +61,7 @@
                 <% @topHipsters.each_with_index do |hipster, i| %>
                     <tr>
                         <td><%= hipster.name %></td>
-                        <td><%= i %></td>
+                        <td><%= i+1 %></td>
                         <td><%= hipster.score %></td>
                     </tr>
                 <% end %>
@@ -126,11 +132,27 @@
 
 <script>
     var fb_id = "<%= @fb_id || 0 %>";
+
+    var pusher = new Pusher('c7f08532bae6835b8099');
+    var channel = pusher.subscribe(fb_id);
+    console.log('channel:',fb_id);
+    channel.bind('done', function(data) {
+      document.location.reload(true);
+    });
+
+    var $prog = $('#superprogress');
+    channel.bind('progress', function(data) {
+      console.log('progress', data);
+       var progress_index = Math.round((data.current / data.total)*100);
+       console.log(progress_index);
+      $prog.animate({width:progress_index + "%"});
+    });
+
     var target = document.getElementById("spinner");
     var spinner = new Spinner().spin(target);
     $(document).ready( function() {
-        if( $('#notice').length === 0 ){
-            window.location.href = "/signin";
-        }
+        $('#signin').click(function(){
+            document.location.href = "/signin";
+        })
     });
 </script>

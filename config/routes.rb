@@ -3,13 +3,15 @@ Thmc::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'home#index'
+  
 
   match '/auth/:provider/callback' => 'sessions#create', via: [:get, :post]
 
   match '/signout' => 'sessions#destroy', :as => :signout, via: [:get, :post]
 
   match '/signin' => 'sessions#new', :as => :signin, via: [:get, :post]
+
+  root :to => 'home#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
