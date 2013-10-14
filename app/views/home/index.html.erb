@@ -59,7 +59,7 @@
 
             <% @topHipsters.each_with_index do |hipster, i| %>
                 <tr>
-                    <td><%= link_to hipster.name, "https://facebook.com/#{hipster.id}" %></td>
+                    <td><%= link_to hipster.name, "https://facebook.com/#{hipster.id}", :target => "_blank" %></td>
                     <td><%= i+1 %></td>
                     <td><%= hipster.score %></td>
                 </tr>
@@ -78,7 +78,7 @@
 
             <% @globalTopHipsters.each_with_index do |hipster, i| %>
                 <tr>
-                    <td><%= link_to hipster.name, "https://facebook.com/#{hipster.id}" %></td>
+                    <td><%= link_to hipster.name, "https://facebook.com/#{hipster.id}", :target => "_blank" %></td>
                     <td><%= i+1 %></td>
                     <td><%= hipster.score %></td>
                 </tr>
@@ -94,11 +94,11 @@
     
     <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.hipstermusiccatalogue.com&amp;width=400&amp;height=80&amp;colorscheme=light&amp;layout=standard&amp;action=like&amp;show_faces=true&amp;send=false" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:400px; height:80px;" allowTransparency="true"></iframe><br>
     
-    Created at the Facebook NorCal Hackathon by: <br>
-    <a href="#">Johan Baversjo</a> | 
-    <a href="#">Ray Smets</a> | 
-    <a href="#">Shervin Shaikh</a> |
-    <a href="#">Ramon Rovirosa</a>
+    Created at the Facebook NorCal Hackathon by:<br>
+    <a href="http://www.linkedin.com/pub/johan-b%C3%A4versj%C3%B6/25/788/b14" target="_blank">Johan Baversjo</a> | 
+    <a href="http://www.linkedin.com/in/raysmets" target="_blank">Ray Smets</a> | 
+    <a href="http://www.linkedin.com/in/shervinshaikh" target="_blank">Shervin Shaikh</a> |
+    <a href="http://www.linkedin.com/pub/ramon-rovirosa/52/545/b9" target="_blank">Ramon Rovirosa</a>
     <br>
     <br><span style="font-size:0.8em;">Copyright &copy; 2013. All rights reserved.</span><br><br>
 </footer>
